@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from 'src/prisma.service';
+import { EnumAppMode } from 'src/types';
 import { CreateFlowersDto } from './flowers.dto';
 
 @Injectable()
@@ -11,7 +12,7 @@ export class FlowersService {
   ) {}
 
   findAll() {
-    console.log(this.configService.get<string>('MODE'));
+    console.log(this.configService.get<EnumAppMode>('MODE'));
     return this.prisma.flower.findMany();
   }
 
